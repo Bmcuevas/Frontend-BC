@@ -29,11 +29,31 @@ Vue.component("my-card", {
       </div>`, 
         
         data(){ return{
-            
+            num:  0,
+            position: 0, 
+            cont: 0,
+            newQuestion: "",
         }
         },
         methods:{ 
-            
+            moveBack(){ 
+                if (this.position > 0){
+                this.position = this.position - 1; 
+                }
+
+            },
+            moveFoward(){
+                if (this.position != this.num){
+                    this.position = this.position + 1; 
+                } else{ 
+                    this.num = this.num + 1;
+                    this.position = this.num;
+                    let newQuestionNumber = returnNumber();
+                    let newQuestion = returnQuestion(newQuestionNumber); 
+                    let object = {number: newQuestionNumber, question: newQuestion, "answer": "", "kind":"", "color":""}
+                    this.pregunta.push(object)
+                }
+            }
         }
     }
 )
@@ -42,10 +62,6 @@ Vue.component("my-card", {
 const app = new Vue({
     el: "#app",
     data:{ 
-        num:  0,
-        position: 0, 
-        cont: 0,
-        newQuestion: "",
         questions:[
             {
         },
@@ -98,25 +114,7 @@ const app = new Vue({
                 }
             }
             console.log(this.auxQuestionObject)
-    },
-            moveBack(){ 
-                if (this.position > 0){
-                this.position = this.position - 1; 
-                }
-
-            },
-            moveFoward(){
-                if (this.position != this.num){
-                    this.position = this.position + 1; 
-                } else{ 
-                    this.num = this.num + 1;
-                    this.position = this.num;
-                    let newQuestionNumber = returnNumber();
-                    let newQuestion = returnQuestion(newQuestionNumber); 
-                    let object = {number: newQuestionNumber, question: newQuestion, "answer": "", "color":""}
-                    this.questions.push(object)
-                }
-            }
+    }
 }
 })
 
