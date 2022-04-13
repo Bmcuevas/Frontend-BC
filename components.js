@@ -8,7 +8,9 @@ Vue.component("my-card", {
         template: `
         <div>
             <div class="card text-white bg-dark mb-3">
-            <p class="card-header" id="question-number" v-if = "this.position >0">{{pregunta[position].kind}}</p>
+            <p class="card-header" id="question-number" v-if = "this.position > 0">
+            <span class = "my-span2">{{pregunta[position].kind}}</span>
+            </p>
             <div class="card-body">
 
             <h2 class="question" id="question-box" v-if = "this.position == 0">
@@ -23,7 +25,7 @@ Vue.component("my-card", {
 
         <div class="buttons">
             <div class="btn-group btn-group-lg" role="group" aria-label="Basic mixed styles example">
-            <button class="btn btn-info"><a href="https://docs.google.com/spreadsheets/d/15RPB8klEso0s9nEVlUE1Rrh7_BTcBi3H3WY-DmisQLk/edit#gid=0" target ="_blank"><i class="fa fa-solid fa-address-book"></i></button>
+            <button class="btn btn-info"><a href="https://docs.google.com/spreadsheets/d/15RPB8klEso0s9nEVlUE1Rrh7_BTcBi3H3WY-DmisQLk/edit#gid=0" target ="_blank"><i class="fa fa-solid fa-address-book"></i></a></button>
             <button id="question-btn-back" class="btn btn-warning" v-on:click="moveBack()"><i class="fa fa-solid fa-backward"></i></button>
             <button id="question-btn" class="btn btn-warning" v-on:click="moveFoward()"><i class="fa fa-solid fa-forward"></i></button>
             <button type="button" class="btn btn-danger"><i class="fa fa-solid fa-thumbs-down"></i></button>
@@ -54,10 +56,10 @@ Vue.component("my-card", {
                 } else{ 
                     this.num = this.num + 1;
                     this.position = this.num;
-                    let [prop, questionKind] = returnKind(this.selectedkind)
+                    let [prop, questionKind, color] = returnKind(this.selectedkind)
                     let newQuestion = returnQuestion(prop,this.questionkindobject);
                     // let newQuestion = returnQuestion(newQuestionNumber); 
-                    let object = {question: newQuestion, "answer": "", kind: questionKind, "color":""}
+                    let object = {question: newQuestion, "answer": "", kind: questionKind, color:""}
                     this.pregunta.push(object)
                 }
             }
@@ -74,26 +76,27 @@ function returnKind(kindArr){
     prop = kindArr[number];
     switch (prop) {
         case "picante":
-            kind = "Pregunta Picante"
+            kind = "Picante"
             break;
         case "previa":
-            kind = "Pregunta de Previa"
+            kind = "Previa"
             break;
         case "gente":
-            kind = "Preguna para Conocer Gente"
+            kind = "Conocer Gente"
+            color = "#8ADDFF";
             break;
         case "ing":
-            kind = "Pregunta de Ingeniero"
+            kind = "Ingeniero"
             break;
         case "general":
-            kind = "Pregunta de Cultura General";
+            kind = "Cultura General";
             break;
         default:
             kind = "";
             prop = "gente";
             break;
     }
-    return [prop, kind]; 
+    return [prop, kind, color]; 
 }
 
 function returnQuestion(prop, kindObj) {
@@ -117,7 +120,8 @@ const app = new Vue({
 
         // Defino los arreglos con las preguntas
         questionObject:{
-            previa: ["¿Verano o invierno?", "¿Que te encaren o encarar?", "¿Pico o Chape?", "¿Montaña o playa?", "¿Gusto de helado favorito?", "¿Te gusta la menta granizada?", "¿Cerveza o fernet?", "¿Cómo fue tu peor vez...?", "¿Hombre, mujeres, ambos o perros?", "¿Es más pesada una piedra de un kg que un almohadon con un kg de plumas?", "¿Te chaparias a la persona que tenes al lado?", "¿Cuál es el mejor trago?", "¿Arriba o abajo?"],
+            previa: ["¿Verano o invierno?", "¿Que te encaren o encarar?", "¿Pico o Chape?", "¿Montaña o playa?", "¿Gusto de helado favorito?", "¿Te gusta la menta granizada?", "¿Cerveza o fernet?", "¿Cómo fue tu peor vez...?", "¿Hombre, mujeres, ambos o perros?", "¿Es más pesada una piedra de un kg que un almohadon con un kg de plumas?", "¿Te chaparias a la persona que tenes al lado?", "¿Cuál es el mejor trago?", "¿Arriba o abajo?", "¿A quién le darías un beso de los que están acá?", "¿Con quién de acá harias una película xxx?"],
+
             gente: ["¿Que es lo que te gusta hacer para relajar?","¿Alguna cosa chiquita que te alegre el dia?","¿A que le tenes miedo?", "Si hoy te ofrecieran irte de viaje ¿ A dónde te irías?","¿Qué es lo que más te gusta de vos?",
             "Suponiendo que la reencarnación existe, ¿en que o en quién te gustaría reencarnar?","¿Cuándo te parece que sabes que estás enamorado de alguien?",
             "¿Perdonaste o perdonarías una infidelidad?","¿Hay algo que harías diferente o que cambiarías de tu pasado?",
@@ -169,14 +173,8 @@ const app = new Vue({
             "¿Te convertiste en la persona que querías ser?","¿Alguien que te haya hecho sentir bien últimamente?","¿Qué opinas de la persona de tu derecha?",
             "¿Estás enamorado/a?","¿Que valor aportás a tu entorno?","¿Cómo descargás tus emociones?","Decí una frase o cita que te guste.",
             "¿Hay algo que sea importante para todos y no para vos?", "¿Ser el mejor en algo o ser bueno en todo?"],
-            ing: ["¿Cuáles son los primeros 5 números de π?", "¿Qué es el teorema central del límite?", "¿Qué es una distribución Bernoulli?", "Una binomial es una suma de...","¿Que es una corriente parásita?", 
-            "¿Que es la reluctancia?",
-            "Enuncia la ley de Ohm", 
-            "Enuncia el teorema de Bolzano",
-            "¿Qué es un MRP?",
-            "¿Qué es la entropia?",
-            "¿Qué es la entalpía?",
-        "¿El voltaje es proporcional o inversamente proporcional a la corriente?"], 
+
+            ing: ["¿Cuáles son los primeros 5 números de π?", "¿Qué es el teorema central del límite?", "¿Qué es una distribución Bernoulli?", "Una binomial es una suma de...","¿Que es una corriente parásita?", "¿Que es la reluctancia?","¿Qué es el factor de potencia?", "¿Cuál es la derivada de xˆ2?", "¿Cuál es la integral de xˆ2?", "¿Que es S en Laplace?", "¿Cómo demostras algo por inducción?", "¿Que es un volumen de control?", "¿Que es una ecuación diferencial?", "¿Cuando la derivada de una función se hace cero que esta pasando?", "Enuncia la ley de Ohm", "Enuncia el teorema de Bolzano","¿Qué es un MRP?","¿Qué es la entropia?","¿Qué es la entalpía?","¿El voltaje es proporcional o inversamente proporcional a la corriente?"], 
 
             general: ["¿Cuál es la distancia de la tierra a la luna?", "¿Cuál es el promedio de pelos en un hombre?", "¿En qué año fue la primera guerra mundial?", "¿En qué año fue la segunda Guerra Mundial?", "¿Cuántas personas hay en la tierra?", "¿Cuántas estrellas hay en el universo?", "¿Quién es el hombre más rico del mundo?", "¿Quién es Peter Parker?", "¿Quién dijo la frase ‘Un gran poder conlleva una gran responsabilidad’?", "¿Cuánto tiempo viven los perros?", "¿Cuánto tiempo viven los gatos?"],
 
