@@ -107,7 +107,7 @@ function returnQuestion(prop, kindObj) {
     return newQuestion
 }
 
-// APP
+// APP: questions
 const app = new Vue({
     el: "#app",
     data:{ 
