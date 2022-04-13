@@ -23,7 +23,7 @@ Vue.component("my-card", {
 
         <div class="buttons">
             <div class="btn-group btn-group-lg" role="group" aria-label="Basic mixed styles example">
-            <button class="btn btn-info"><i class="fa fa-solid fa-address-book"></i></button>
+            <button class="btn btn-info"><a href="https://docs.google.com/spreadsheets/d/15RPB8klEso0s9nEVlUE1Rrh7_BTcBi3H3WY-DmisQLk/edit#gid=0" target ="_blank"><i class="fa fa-solid fa-address-book"></i></button>
             <button id="question-btn-back" class="btn btn-warning" v-on:click="moveBack()"><i class="fa fa-solid fa-backward"></i></button>
             <button id="question-btn" class="btn btn-warning" v-on:click="moveFoward()"><i class="fa fa-solid fa-forward"></i></button>
             <button type="button" class="btn btn-danger"><i class="fa fa-solid fa-thumbs-down"></i></button>
