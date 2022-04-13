@@ -64,7 +64,7 @@
     position:absolute;
     display: grid;
     grid-template-columns: 90%;
-    grid-template-rows: auto auto;
+    grid-template-rows: 0.4fr .05fr 0.4fr;
     width: 100%;
     /* PARA QUE NO SE SALGA DE LA PANTALLA LE DOY UN WIDTH MÁS GRANDE */
     height: 130%; 
@@ -75,5 +75,6 @@
         padding: 5.5vw !important;
         margin-bottom: 2vw !important;
     }
+
    
 }
