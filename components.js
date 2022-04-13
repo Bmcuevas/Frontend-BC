@@ -1,5 +1,6 @@
 // COMPONENTS
 Vue.component("my-card", {
+    // podría separar tarjeta y botones en dos componentes distintos... 
         props: ["pregunta", "kind"],
         template: `
         <div>
@@ -36,6 +37,8 @@ Vue.component("my-card", {
         }
         },
         methods:{ 
+            // Evento botones "adelante" y "atrás"
+            // Me conviene tener estos métodos acá? 
             moveBack(){ 
                 if (this.position > 0){
                 this.position = this.position - 1; 
@@ -68,14 +71,17 @@ const app = new Vue({
     ], 
         questionKind:[], 
 
+        // Defino los arreglos con las preguntas
+        // ¿COMO SE LO PASO AL COMPONENTE "MY-CARD"?
         questionObject:{
-            previa: ["preguntas"],
+            previa: ["soy", "inge"],
             gente: ["¿cuantos hermanos tenes?"],
             ing: ["preguntas3"], 
             general: ["hola"],
             picante: ["preguntas5"]
         }, 
 
+        // Defino los arreglos según los checkbox. 
         auxQuestionObject:{
             previa: "",
             gente: "", 
@@ -85,13 +91,13 @@ const app = new Vue({
         }
     }, 
     methods:{
+        // Esta función es para tomar las preguntas del checkbox 
         creatingArray(){
             this.auxQuestionObject.picante = ""
             this.auxQuestionObject.previa = ""
             this.auxQuestionObject.general = ""
             this.auxQuestionObject.gente = ""
             this.auxQuestionObject.ing = ""
-
             let kindArray = Object.values(this.questionKind)
             for (var i = 0; i < kindArray.length; i++){
                 var supp = kindArray[i]; 
@@ -113,7 +119,6 @@ const app = new Vue({
                         break;
                 }
             }
-            console.log(this.auxQuestionObject)
     }
 }
 })
@@ -133,11 +138,7 @@ function returnQuestion(num){
 
 
 // QUESTIONS ARRAY
-
-const ing_array = ["soy", "inge"]
-const previa_array = ["la", "gente"]
-const gente_array = ["mucho", "alcohol"]
-
+// Este array lo tengo que sacar cuando me funcione el objecto con los array de preguntas. 
 const array = ["¿Que es lo que te gusta hacer para relajar?","¿Alguna cosa chiquita que te alegre el dia?","¿A que le tenes miedo?", "Si hoy te ofrecieran irte de viaje ¿ A dónde te irías?","¿Qué es lo que más te gusta de vos?",
 "Suponiendo que la reencarnación existe, ¿en que o en quién te gustaría reencarnar?","¿Cuándo te parece que sabes que estás enamorado de alguien?",
 "¿Perdonaste o perdonarías una infidelidad?","¿Hay algo que harías diferente o que cambiarías de tu pasado?",
