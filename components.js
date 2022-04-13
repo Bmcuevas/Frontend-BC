@@ -117,7 +117,7 @@ const app = new Vue({
 
         // Defino los arreglos con las preguntas
         questionObject:{
-            previa: ["soy", "inge"],
+            previa: ["¿Verano o invierno?", "¿Que te encaren o encarar?", "¿Pico o Chape?", "¿Montaña o playa?", "¿Gusto de helado favorito?", "¿Te gusta la menta granizada?", "¿Cerveza o fernet?", "¿Cómo fue tu peor vez...?", "¿Hombre, mujeres, ambos o perros?", "¿Es más pesada una piedra de un kg que un almohadon con un kg de plumas?"],
             gente: ["¿Que es lo que te gusta hacer para relajar?","¿Alguna cosa chiquita que te alegre el dia?","¿A que le tenes miedo?", "Si hoy te ofrecieran irte de viaje ¿ A dónde te irías?","¿Qué es lo que más te gusta de vos?",
             "Suponiendo que la reencarnación existe, ¿en que o en quién te gustaría reencarnar?","¿Cuándo te parece que sabes que estás enamorado de alguien?",
             "¿Perdonaste o perdonarías una infidelidad?","¿Hay algo que harías diferente o que cambiarías de tu pasado?",
@@ -169,10 +169,17 @@ const app = new Vue({
             "¿Te convertiste en la persona que querías ser?","¿Alguien que te haya hecho sentir bien últimamente?","¿Qué opinas de la persona de tu derecha?",
             "¿Estás enamorado/a?","¿Que valor aportás a tu entorno?","¿Cómo descargás tus emociones?","Decí una frase o cita que te guste.",
             "¿Hay algo que sea importante para todos y no para vos?"],
-            ing: ["preguntas3"], 
-            general: ["hola", "como", "va"],
-            picante: ["¿Que es lo que te gusta hacer para relajar?","¿Alguna cosa chiquita que te alegre el dia?","¿A que le tenes miedo?", "Si hoy te ofrecieran irte de viaje ¿ A dónde te irías?","¿Qué es lo que más te gusta de vos?",
-            "Suponiendo que la reencarnación existe, ¿en que o en quién te gustaría reencarnar?"]
+            ing: ["¿Cuáles son los primeros 5 números de π?", "¿Qué es el teorema central del límite?", "¿Qué es una distribución Bernoulli?", "Una binomial es una suma de...","¿Que es una corriente parásita?", 
+            "¿Que es la reluctancia?",
+            "Enuncia la ley de Ohm", 
+            "Enuncia el teorema de Bolzano",
+            "¿Qué es un MRP?",
+            "¿Qué es la entropia?",
+            "¿Qué es la entalpía?"], 
+
+            general: ["¿Cuál es la distancia de la tierra a la luna?", "¿Cuál es el promedio de pelos en un hombre?", "¿En qué año fue la primera guerra mundial?", "¿En qué año fue la segunda Guerra Mundial?", "¿Cuántas personas hay en la tierra?", "¿Cuántas estrellas hay en el universo?", "¿Quién es el hombre más rico del mundo?", "¿Quién es Peter Parker?", "¿Quién dijo la frase ‘Un gran poder conlleva una gran responsabilidad’?", "¿Cuánto tiempo viven los perros?", "¿Cuánto tiempo viven los gatos?"],
+
+            picante: ["¿Pasar hambre o sed?", "¿Perdonaste una infidelidad?", "¿Comer hamburguesa por un año o nunca más comer algo que te guste?", "¿Ser millonario o morir virgen?", "¿Vivir 200 años sin amor o vivir 30 con amor?"]
         }, 
 
         // Defino los arreglos según los checkbox. 
