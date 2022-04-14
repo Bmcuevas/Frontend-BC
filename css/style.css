@@ -7,6 +7,10 @@
 
 }
 
+body{
+    font-family: "Poppins", sans-serif;
+}
+
 .my-container{ 
     /* OCUPO TODA LA PANTALLA */
     position: absolute;

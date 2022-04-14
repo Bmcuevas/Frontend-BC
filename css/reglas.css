@@ -2,15 +2,26 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
-main{ 
+body{
+    background-color: #131313;
+    font-family: "Poppins", sans-serif;
+}
+
+
+.my-span{ 
+    color:#FF7869 ; 
+    font-style: bold;
+}
+
+
+.my-container{ 
     display: grid;
     height: 100vh;
-    width: 100vw;
+    width: 100%;
     grid-template-rows: 0.2fr 0.8fr;
     justify-content: center;
-    align-items: center;
-
 }
 
 .reglas-changer{
@@ -19,14 +30,33 @@ main{
     justify-content: center;
     margin: 1.5em;
     font-size: 4em;
+    color: #fff;
 }
+
+.txt-rotate{
+    background-color: #131313;
+    /* box-shadow: 0em 0em 1em #0079D3; */
+    animation-name: changing-shadow;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    border-radius: 10px;
+    padding: 0.3em;
+}
+
+@keyframes changing-shadow {
+    0%   {box-shadow: 0em 0em 1em #0079D3;}
+    25%  {box-shadow: 0em 0em 1em #772AFF;}
+    50%  {box-shadow: 0em 0em 1em #FE035E;}
+    100% {box-shadow: 0em 0em 1em #69C400;}
+  }
 
 .card-container{ 
  width: 90vw;
  display: grid;
  grid-template-columns: 1fr 1fr 1fr;
- grid-gap: 2em;
+ grid-gap: 2.5em;
  align-items: center;
+ margin-bottom: 5em;
 }
 
 
@@ -39,6 +69,35 @@ main{
     padding: 2em;
     background-color: #04385E;
     border-radius: 2em;
+    
+
+}
+.card-icon{ 
+    font-size: 4em;
+}
+.card1{ 
+    background-color: #FFC200;
+    
+}
+
+.card2{ 
+    background-color: #772AFF;
+
+}
+
+.card3{ 
+    background-color: #2296F3;
+
+}
+
+.card4{ 
+    background-color: #69C400;
+
+}
+
+.card5{ 
+    background-color: #FE035E;
+
 }
 
 
@@ -54,18 +113,139 @@ main{
 @media only screen and (max-width: 950px){
     .card-container{
         grid-template-columns: 1fr;
-        width: 90vw;
-    }
-    .reglas-changer{
-        font-size: 3em;
+        width: 90%;
+        margin: 1em;
 
     }
+    .reglas-changer{
+        font-size: 2em;
+        max-width: 80%;
+
+}
 }
 @media only screen and (max-width: 1000px) and (min-width:800px){
     .card-container{
         grid-template-columns: 1fr 1fr;
     }
     .reglas-changer{
-        
+        font-size: 3em;
     }
+}
+
+
+/*========================= 
+Footer CSS 
+===========================*/
+
+.footer_container{ 
+	background-color: #fff;
+	padding: 5rem; 
+	display: flex; 
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+#footer_logo{
+	color: black;
+	display: flex;
+	align-items: center;
+	cursor: center;
+	text-decoration: none;
+	font: 2rem;
+}
+
+.footer_links{
+	width:100%;
+	max-width:1000px ;
+	display: flex;
+	justify-content: center;
+}
+
+.footer_link_wrapper{
+	display:flex;
+}
+
+.footer_link_items{
+	display:flex;
+	flex-direction:column; 
+	align-items: flex-start;
+	margin:16px;
+	text-align: left;
+	width: 160px;
+	box-sizing: border-box;
+}
+
+.footer_link_items h2{
+	margin-bottom: 16px;
+	color:black; 
+
+}
+
+.footer_link_items a{
+	color:black;
+	text-decoration: none;
+	margin-bottom: 0.5rem;
+}
+
+.footer_link_items a:hover{
+	color: black; 
+	transition: 0.3 ease-out;
+
+}
+
+.social_icon_link{
+	color: black; 
+	font-size: 24px;
+}
+
+.social_media{
+	max-width: 1000px;
+	width: 100%;
+}
+
+.social_media_wrap{
+	display:flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 90%;
+	max-width: 1000px;
+	margin: 40px auto 0 auto;
+}
+
+.social_icons{
+	display:flex;
+	justify-content: space-between;
+	align-items:center;
+	width:240px;
+}
+
+.website_rights{
+	color: black;
+}
+
+@media screen and (max-width:820px){
+	.footer_links{
+		padding-top: 2rem;
+	}
+	#footer_logo{
+		margin-bottom:2rem;
+	}
+	.website_rights{
+		margin-bottom: 2rem;
+	}
+	.footer_link_wrapper{
+		flex-direction: column;
+	}
+	.social_media_wrap{
+		flex-direction: column;
+	}
+}
+
+@media screen and (max-width:480px){
+	.footer_link_items{
+		margin:0;
+		padding:10px;
+		width:100%
+	}
 }
