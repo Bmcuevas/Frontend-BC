@@ -56,7 +56,7 @@ Vue.component("my-card", {
                 } else{ 
                     this.num = this.num + 1;
                     this.position = this.num;
-                    let [prop, questionKind, color] = returnKind(this.selectedkind)
+                    let [prop, questionKind] = returnKind(this.selectedkind)
                     let newQuestion = returnQuestion(prop,this.questionkindobject);
                     // let newQuestion = returnQuestion(newQuestionNumber); 
                     let object = {question: newQuestion, "answer": "", kind: questionKind, color:""}
@@ -82,7 +82,7 @@ function returnKind(kindArr){
             kind = "Previa"
             break;
         case "gente":
-            kind = "Conocer Gente"
+            kind = "Pregunta Inofensiva"
             color = "#8ADDFF";
             break;
         case "ing":
@@ -91,12 +91,15 @@ function returnKind(kindArr){
         case "general":
             kind = "Cultura General";
             break;
+        case "conocer":
+            kind = "¿Cuánto te conocen?";
+            break;
         default:
             kind = "";
             prop = "gente";
             break;
     }
-    return [prop, kind, color]; 
+    return [prop, kind]; 
 }
 
 function returnQuestion(prop, kindObj) {
@@ -178,7 +181,9 @@ const app = new Vue({
 
             general: ["¿Cuál es la distancia de la tierra a la luna?", "¿Cuál es el promedio de pelos en un hombre?", "¿En qué año fue la primera guerra mundial?", "¿En qué año fue la segunda Guerra Mundial?", "¿Cuántas personas hay en la tierra?", "¿Cuántas estrellas hay en el universo?", "¿Quién es el hombre más rico del mundo?", "¿Quién es Peter Parker?", "¿Quién dijo la frase ‘Un gran poder conlleva una gran responsabilidad’?", "¿Cuánto tiempo viven los perros?", "¿Cuánto tiempo viven los gatos?"],
 
-            picante: ["¿Pasar hambre o sed?", "¿Perdonaste una infidelidad?", "¿Comer hamburguesa por un año o nunca más comer algo que te guste?", "¿Ser millonario o morir virgen?", "¿Vivir 200 años sin amor o vivir 30 con amor?", "¿Adelante o atras?", "¿Probaste en el auto?", "¿Te sentas en la torta?", "¿Te chaparias a la persona que tenes al lado?", "¿Tragas o escupís?", "¿Estar con tu padre en el cuerpo de tu pareja o con tu pareja en el cuerpo de tu padre?", "¿Cómo preferis morirte?", "¿Arriba o abajo?", "¿Que tipo de nopor miras?", "¿Cambiaron tus gustos de nopor en el tiempo?", "¿Buscarías ayuda terapéutica para solucionar algún problema sexual?", "¿Usas algo para hacer más intensa la experiencia en la cama...? ¿Qué?", "¿Cuando y cómo fue tu primera vez?", "¿Alguna vez pagaste por sexo?", "¿Alguna vez te pagaron por sexo?", "¿Previa antes del acto sexual o no?", "¿Cuál es la previa perfecta antes de...?", "¿Dominar o ser dominado?", "¿Cada cuánto y cómo le das al ganzo?", "¿En que pensas cuando te tocas?", "¿Cuál fue tu experiencia más incómoda en la cama?", "¿Sexo rápido o prolongado?", "¿Te gusta dar o que te den por el chiquito?", "¿Alguna vez estuviste con alguien que no debías?", "¿Algo que quieras probar en la cama?", "¿Salvaje o romántico?", "¿Decís que no cuando no te gusta?", "¿Te gusta sextear?"]
+            picante: ["¿Pasar hambre o sed?", "¿Perdonaste una infidelidad?", "¿Comer hamburguesa por un año o nunca más comer algo que te guste?", "¿Ser millonario o morir virgen?", "¿Vivir 200 años sin amor o vivir 30 con amor?", "¿Adelante o atras?", "¿Probaste en el auto?", "¿Te sentas en la torta?", "¿Te chaparias a la persona que tenes al lado?", "¿Tragas o escupís?", "¿Estar con tu padre en el cuerpo de tu pareja o con tu pareja en el cuerpo de tu padre?", "¿Cómo preferis morirte?", "¿Arriba o abajo?", "¿Que tipo de nopor miras?", "¿Cambiaron tus gustos de nopor en el tiempo?", "¿Buscarías ayuda terapéutica para solucionar algún problema sexual?", "¿Usas algo para hacer más intensa la experiencia en la cama...? ¿Qué?", "¿Cuando y cómo fue tu primera vez?", "¿Alguna vez pagaste por sexo?", "¿Alguna vez te pagaron por sexo?", "¿Previa antes del acto sexual o no?", "¿Cuál es la previa perfecta antes de...?", "¿Dominar o ser dominado?", "¿Cada cuánto y cómo le das al ganzo?", "¿En que pensas cuando te tocas?", "¿Cuál fue tu experiencia más incómoda en la cama?", "¿Sexo rápido o prolongado?", "¿Te gusta dar o que te den por el chiquito?", "¿Alguna vez estuviste con alguien que no debías?", "¿Algo que quieras probar en la cama?", "¿Salvaje o romántico?", "¿Decís que no cuando no te gusta?", "¿Te gusta sextear?"], 
+
+            conocer: ['¿Cuál es tu color favorito?', '¿Cuál es tu gusto de helado favorito?', '¿Pizza o Hamburguesa?', '¿Cuantas parejas tuviste?', '¿Cuál es tu comida favorita?', '¿Fernet o cerveza?', '¿Qué tipo de música escuchas?']
         }, 
 
         // Defino los arreglos según los checkbox. 
@@ -237,7 +242,8 @@ const app = new Vue({
             "¿Hay algo que sea importante para todos y no para vos?"], 
             ing: "",
             general: "",
-            picante: ""
+            picante: "",
+            conocer: "",
         }
     }, 
     methods:{
@@ -249,6 +255,7 @@ const app = new Vue({
             delete this.auxQuestionObject.gente 
             delete this.auxQuestionObject.ing
             delete this.auxQuestionObject.general
+            delete this.auxQuestionObject.conocer
             
             let kindArray = Object.values(this.questionKind)
             for (var i = 0; i < kindArray.length; i++){
@@ -268,6 +275,9 @@ const app = new Vue({
                         break;
                     case "general":
                         this.auxQuestionObject.general = this.questionObject.general;
+                        break;
+                    case "conocer":
+                        this.auxQuestionObject.conocer = this.questionObject.conocer;
                         break;
                     default:
                         this.auxQuestionObject.gente = this.questionObject.gente; 
