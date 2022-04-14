@@ -119,7 +119,7 @@ body{
     .card-container{
         grid-template-columns: 1fr;
         width: 90%;
-        margin: 0 auto;
+        margin: 1em auto;
 
     }
     .reglas-changer{
