@@ -37,18 +37,20 @@ body{
     background-color: #131313;
     /* box-shadow: 0em 0em 1em #0079D3; */
     animation-name: changing-shadow;
-    animation-duration: 10s;
+    animation-duration: 15s;
     animation-iteration-count: infinite;
     border-radius: 10px;
     padding: 0.3em;
 }
 
 @keyframes changing-shadow {
-    0%   {box-shadow: 0em 0em 1em #0079D3;}
+    0%   {box-shadow: 0em 0em 1em #FD5739;}
     25%  {box-shadow: 0em 0em 1em #772AFF;}
-    50%  {box-shadow: 0em 0em 1em #FE035E;}
-    100% {box-shadow: 0em 0em 1em #69C400;}
+    50%  {box-shadow: 0em 0em 1em #2296F3;}
+    75%  {box-shadow: 0em 0em 1em #69C400;}
+    100% {box-shadow: 0em 0em 1em #FFC400;}
   }
+  
 
 .card-container{ 
  width: 90vw;
@@ -76,7 +78,7 @@ body{
     font-size: 4em;
 }
 .card1{ 
-    background-color: #FFC200;
+    background-color: #FD5739;
     
 }
 
@@ -96,10 +98,13 @@ body{
 }
 
 .card5{ 
-    background-color: #FE035E;
+    background-color: #FFC400;
 
 }
 
+.card6{
+	background-color: #FE4198;
+}
 
 .card:hover{
     transform: scale(105%);
@@ -114,7 +119,7 @@ body{
     .card-container{
         grid-template-columns: 1fr;
         width: 90%;
-        margin: 1em;
+        margin: 0 auto;
 
     }
     .reglas-changer{
@@ -126,6 +131,7 @@ body{
 @media only screen and (max-width: 1000px) and (min-width:800px){
     .card-container{
         grid-template-columns: 1fr 1fr;
+		margin: 0 auto;
     }
     .reglas-changer{
         font-size: 3em;
