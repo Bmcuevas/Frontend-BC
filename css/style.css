@@ -51,6 +51,8 @@ body{
 
 .btn{
     padding: 2.5vw !important;
+    margin: .2em !important;
+    border: 1px solid black;
 }
 
 /* FOOTER */
