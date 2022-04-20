@@ -13,7 +13,7 @@ Vue.component("my-card", {
 
             <h2 class="question" id="question-box" v-if = "this.position == 0">
             Hace click en  <span class = "my-span"> <i class="fa fa-solid fa-forward"></i> </span>  para ver una pregunta...
-          </h2>
+            </h2>
 
             <h2 class="question" id="question-box" v-if = "this.position >0">
             {{pregunta[position].question}}
