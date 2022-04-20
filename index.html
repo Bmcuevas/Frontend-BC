@@ -39,69 +39,71 @@
         </div>
     </nav>
 
-    <!-- BUY ME A COFFE -->
-    <!-- CARD -->
-        <div  id = "app" class="my-container">
-            <my-card v-bind:pregunta = "questions" v-bind:questionkindobject = "auxQuestionObject" v-bind:position = "position"></my-card>     
-            
-    <!-- BUTTONS -->
-            <div class="buttons">
-              <div class="btn-group btn-group-lg" role="group" aria-label="Basic mixed styles example">
-              <button id="question-btn-back" class="btn btn-warning" v-on:click="moveBack()"><i class="fa fa-solid fa-backward"></i></button>
-              <a href="preguntas.html" class="btn btn-info" target = "_blank"><i class="fa fa-solid fa-pen"></i> Agregá una Pregunta</a>
-              <button id="question-btn" class="btn btn-warning" v-on:click="moveFoward()"><i class="fa fa-solid fa-forward"></i></button>
-              </div>
+    
+
+    <div  id = "app" class="my-container">
+      <!-- CARD -->
+        <my-card v-bind:pregunta = "questions" v-bind:position = "position"></my-card>     
+        
+      <!-- BUTTONS -->
+        <div class="buttons">
+          <div class="btn-group btn-group-lg" role="group" aria-label="Basic mixed styles example">
+          <button id="question-btn-back" class="btn btn-warning" v-on:click="moveBack()"><i class="fa fa-solid fa-backward"></i></button>
+          <a href="preguntas.html" class="btn btn-info" target = "_blank"><i class="fa fa-solid fa-pen"></i> Agregá una Pregunta</a>
+          <button id="question-btn" class="btn btn-warning" v-on:click="moveFoward()"><i class="fa fa-solid fa-forward"></i></button>
           </div>
-
-            <div class = "buy-coffe"><a href="https://www.buymeacoffee.com/brunocuevas?new=1" target="_blank"><img class = "coffe-img" src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a></div>
-
-
-        <div class="accordion-item">
-          
-            <h2 class="accordion-header" id="headingOne">
-              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                Modos de Juego
-              </button>
-            </h2>
-            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-              <div class="accordion-body">
-
-                <!-- IMPORTANTE LA FUNCIÓN CHANGE! -->
-                <li class="list-group-item">
-                  <input class="form-check-input me-1" type="checkbox" value="picante" aria-label="..." v-model = "questionKind" @change="creatingArray()">
-                  Preguntas Picantes (+18)
-                </li>
-
-                <li class="list-group-item">
-                  <input class="form-check-input me-1" type="checkbox" value="previa" aria-label="..." v-model = "questionKind" @change = "creatingArray()">
-                  Preguntas de Previa
-                </li>
-
-                <li class="list-group-item">
-                  <input class="form-check-input me-1" type="checkbox" value="gente" aria-label="..." v-model = "questionKind" @change = "creatingArray()">
-                  Preguntas Inofensivas
-                </li>
-
-                <li class="list-group-item">
-                  <input class="form-check-input me-1" type="checkbox" value="conocer" aria-label="..." v-model = "questionKind" @change = "creatingArray()">
-                  ¿Cuánto te conocen? 
-                </li>
-
-                <li class="list-group-item">
-                  <input class="form-check-input me-1" type="checkbox" value="ing" aria-label="..." v-model = "questionKind" @change = "creatingArray()">
-                  Solo Ingenieros
-                </li>
-
-                <li class="list-group-item">
-                  <input class="form-check-input me-1" type="checkbox" value="general" aria-label="..." v-model = "questionKind" @change = "creatingArray()">
-                  Cultura General
-                </li>
-                
-              </ul>
-              </div>
-            </div>
-        </div>
       </div>
+
+      <!-- BUY ME A COFFE -->
+        <div class = "buy-coffe"><a href="https://www.buymeacoffee.com/brunocuevas?new=1" target="_blank"><img class = "coffe-img" src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a></div>
+
+      <!-- ACCORDION -->
+    <div class="accordion-item">
+      
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Modos de Juego
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+
+            <!-- IMPORTANTE LA FUNCIÓN CHANGE! -->
+            <li class="list-group-item">
+              <input class="form-check-input me-1" type="checkbox" value="picante" aria-label="..." v-model = "questionKind" @change="creatingArray()">
+              Preguntas Picantes (+18)
+            </li>
+
+            <li class="list-group-item">
+              <input class="form-check-input me-1" type="checkbox" value="previa" aria-label="..." v-model = "questionKind" @change = "creatingArray()">
+              Preguntas de Previa
+            </li>
+
+            <li class="list-group-item">
+              <input class="form-check-input me-1" type="checkbox" value="gente" aria-label="..." v-model = "questionKind" @change = "creatingArray()">
+              Preguntas Inofensivas
+            </li>
+
+            <li class="list-group-item">
+              <input class="form-check-input me-1" type="checkbox" value="conocer" aria-label="..." v-model = "questionKind" @change = "creatingArray()">
+              ¿Cuánto te conocen? 
+            </li>
+
+            <li class="list-group-item">
+              <input class="form-check-input me-1" type="checkbox" value="ing" aria-label="..." v-model = "questionKind" @change = "creatingArray()">
+              Solo Ingenieros
+            </li>
+
+            <li class="list-group-item">
+              <input class="form-check-input me-1" type="checkbox" value="general" aria-label="..." v-model = "questionKind" @change = "creatingArray()">
+              Cultura General
+            </li>
+            
+          </ul>
+          </div>
+        </div>
+    </div>
+  </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
