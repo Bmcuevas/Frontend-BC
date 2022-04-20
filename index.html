@@ -40,10 +40,21 @@
     </nav>
 
     <!-- BUY ME A COFFE -->
+    <!-- CARD -->
         <div  id = "app" class="my-container">
-            <my-card v-bind:pregunta = "questions" v-bind:questionkindobject = "auxQuestionObject" v-bind:selectedkind = "questionKind"></my-card>      
+            <my-card v-bind:pregunta = "questions" v-bind:questionkindobject = "auxQuestionObject" v-bind:position = "position"></my-card>     
+            
+    <!-- BUTTONS -->
+            <div class="buttons">
+              <div class="btn-group btn-group-lg" role="group" aria-label="Basic mixed styles example">
+              <button id="question-btn-back" class="btn btn-warning" v-on:click="moveBack()"><i class="fa fa-solid fa-backward"></i></button>
+              <a href="preguntas.html" class="btn btn-info" target = "_blank"><i class="fa fa-solid fa-pen"></i> Agregá una Pregunta</a>
+              <button id="question-btn" class="btn btn-warning" v-on:click="moveFoward()"><i class="fa fa-solid fa-forward"></i></button>
+              </div>
+          </div>
+
             <div class = "buy-coffe"><a href="https://www.buymeacoffee.com/brunocuevas?new=1" target="_blank"><img class = "coffe-img" src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a></div>
-        
+
 
         <div class="accordion-item">
           
