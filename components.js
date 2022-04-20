@@ -2,9 +2,7 @@
 Vue.component("my-card", {
     // podría separar tarjeta y botones en dos componentes distintos... 
         props:[
-            "pregunta",
-            "questionkindobject", 
-            "selectedkind"], 
+            "pregunta", "position"], 
         template: `
         <div>
             <div class="card text-white bg-dark mb-3">
@@ -15,54 +13,16 @@ Vue.component("my-card", {
 
             <h2 class="question" id="question-box" v-if = "this.position == 0">
             Hace click en  <span class = "my-span"> <i class="fa fa-solid fa-forward"></i> </span>  para ver una pregunta...
-          </h2>
+            </h2>
 
             <h2 class="question" id="question-box" v-if = "this.position >0">
             {{pregunta[position].question}}
             </h2>
             </div>
         </div>
-
-        <div class="buttons">
-            <div class="btn-group btn-group-lg" role="group" aria-label="Basic mixed styles example">
-            <button id="question-btn-back" class="btn btn-warning" v-on:click="moveBack()"><i class="fa fa-solid fa-backward"></i></button>
-            <a href="preguntas.html" class="btn btn-info" target = "_blank"><i class="fa fa-solid fa-pen"></i> Agregá una Pregunta</a>
-            <button id="question-btn" class="btn btn-warning" v-on:click="moveFoward()"><i class="fa fa-solid fa-forward"></i></button>
-            </div>
-        </div>
       </div>`, 
-      
-        data(){ return{
-            num:  0,
-            position: 0, 
-            cont: 0,
-            newQuestion: "",
-        }
-        },
-        methods:{ 
-            // Evento botones "adelante" y "atrás"
-            // Me conviene tener estos métodos acá? 
-            moveBack(){ 
-                if (this.position > 0){
-                this.position = this.position - 1; 
-                }
-
-            },
-            moveFoward(){
-                if (this.position != this.num){
-                    this.position = this.position + 1; 
-                } else{ 
-                    this.num = this.num + 1;
-                    this.position = this.num;
-                    let [prop, questionKind] = returnKind(this.selectedkind)
-                    let newQuestion = returnQuestion(prop,this.questionkindobject);
-                    // let newQuestion = returnQuestion(newQuestionNumber); 
-                    let object = {question: newQuestion, "answer": "", kind: questionKind, color:""}
-                    this.pregunta.push(object)
-                }
-            }
-        }
-    }
+}
+        
 )
 
 // FUNCTIONS! 
@@ -115,6 +75,10 @@ function returnQuestion(prop, kindObj) {
 const app = new Vue({
     el: "#app",
     data:{ 
+        num:  0,
+        position: 0, 
+        cont: 0,
+        newQuestion: "",
         questions:[{}], 
         questionKind:["gente"], 
         gente: ["¿cuantos hermanos tenes?"],
@@ -282,10 +246,27 @@ const app = new Vue({
                         break;
                 }
             }
-    }
+    },
+        // Evento botones "adelante" y "atrás"
+        // Me conviene tener estos métodos acá? 
+        moveBack(){ 
+            if (this.position > 0){
+            this.position = this.position - 1; 
+            }
+
+        },
+        moveFoward(){
+            if (this.position != this.num){
+                this.position = this.position + 1; 
+            } else{ 
+                this.num = this.num + 1;
+                this.position = this.num;
+                let [prop, questionKind] = returnKind(this.questionKind)
+                let newQuestion = returnQuestion(prop,this.auxQuestionObject);
+                // let newQuestion = returnQuestion(newQuestionNumber); 
+                let object = {question: newQuestion, "answer": "", kind: questionKind, color:""}
+                this.questions.push(object)
+            }
+        }
 }
 })
-
-
-// QUESTIONS ARRAY
-// Este array lo tengo que sacar cuando me funcione el objecto con los array de preguntas. 
