@@ -2,7 +2,7 @@ Vue.component("navbar", {
         template: `
         <nav class="navbar">
 	<div class = "navbar_container">
-		<a href = "#home" id="navbar_logo"><img class= "logo" src="img/logo.png" alt=""></a>
+		<a href = "index.html" id="navbar_logo"><img class= "logo" src="img/logo.png" alt=""></a>
 		<div class="navbar_toggle" id = "mobile-menu">
 			<span class="bar"></span>
 			<span class="bar"></span>

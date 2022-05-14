@@ -6,7 +6,7 @@
 
 .games-container{ 
     padding: 3vw;
-    border: black 2px solid;
+    border: #0F2A47 2px solid;
     display: grid;
     grid-template-rows: 0.3fr 1fr;
     list-style-type: none;
@@ -16,6 +16,3 @@
     justify-content: center;
 }
 
-input[type = "checkbox"]:checked{ 
-    box-shadow: aqua;
-}
