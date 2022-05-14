@@ -1,25 +1,21 @@
 // COMPONENTS
-Vue.component("my-card", {
+Vue.component("my-card-content", {
     // podría separar tarjeta y botones en dos componentes distintos... 
         props:[
             "pregunta", "position"], 
         template: `
         <div>
-            <div class="card text-white bg-dark mb-3">
-            <p class="card-header" id="question-number" v-if = "this.position > 0">
-            <span class = "my-span2">{{pregunta[position].kind}}</span>
-            </p>
+                <p class="card-header" id="question-number" v-if = "this.position > 0">
+                    <span class = "my-span2">{{pregunta[position].kind}}</span>
+                </p>
             <div class="card-body">
+                <h2 class="question" id="question-box" v-if = "this.position == 0">
+                Hace click en  <span class = "my-span"> <i class="fa fa-solid fa-forward"></i> </span>  para ver una pregunta...
+                </h2>
 
-            <h2 class="question" id="question-box" v-if = "this.position == 0">
-            Hace click en  <span class = "my-span"> <i class="fa fa-solid fa-forward"></i> </span>  para ver una pregunta...
-            </h2>
-
-            <h2 class="question" id="question-box" v-if = "this.position >0">
-            {{pregunta[position].question}}
-            </h2>
-            </div>
-        </div>
+                <h2 class="question" id="question-box" v-if = "this.position >0">
+                {{pregunta[position].question}}
+                </h2>
       </div>`, 
 }
         
@@ -73,7 +69,7 @@ function returnQuestion(prop, kindObj) {
 
 // APP: questions
 const app = new Vue({
-    el: "#app",
+    el: "#card",
     data:{ 
         num:  0,
         position: 0, 

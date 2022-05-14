@@ -7,106 +7,92 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/card.css">
+    <link rel="stylesheet" href="css/buttons.css">
+    <link rel="stylesheet" href="css/games-container.css">
+
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+
     <title>Pregunta3</title>
     <link rel="icon" type="image/x-icon" href="/img/logo.png">
 </head>
 <body>
-    <nav class="navbar navbar-dark bg-dark">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Pregunta<span class = "my-span">3</span></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link active" href="index.html">Juego</a>
-              </li>
-              <li class="nav-item">
-                <!-- Cambiar si esta en active o no -->
-                <a class="nav-link" aria-current="page" href="reglas.html">Reglas</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="preguntas.html" target = "">Agregá tu pregunta!</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="https://brunocuevas.ml/" target = "_blank">Bruno Cuevas</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-    </nav>
 
-    
+    <div id="my-nav"><navbar></navbar></div>
 
-    <div  id = "app" class="my-container">
+    <div  id = "card" class="my-container">
       <!-- CARD -->
-        <my-card v-bind:pregunta = "questions" v-bind:position = "position"></my-card>     
-        
-      <!-- BUTTONS -->
-        <div class="buttons">
-          <div class="btn-group btn-group-lg" role="group" aria-label="Basic mixed styles example">
-          <button id="question-btn-back" class="btn btn-warning" v-on:click="moveBack()"><i class="fa fa-solid fa-backward"></i></button>
-          <a href="preguntas.html" class="btn btn-info" target = "_blank"><i class="fa fa-solid fa-pen"></i> Agregá una Pregunta</a>
-          <button id="question-btn" class="btn btn-warning" v-on:click="moveFoward()"><i class="fa fa-solid fa-forward"></i></button>
-          </div>
+
+      <div class="question-card">
+        <my-card-content v-bind:pregunta = "questions" v-bind:position = "position"></my-card-content>     
       </div>
+      
+        <!-- BUTTONS -->
+        <div class="buttons">
+
+          <button  class="btn one" v-on:click="moveBack()"><i class="fa fa-solid fa-backward"></i></button>
+          <a href="preguntas.html" class="btn two" target = "_blank"><i class="fa fa-solid fa-pen"></i> Agregá una Pregunta</a>
+          <button  class="btn three" v-on:click="moveFoward()"><i class="fa fa-solid fa-forward"></i></button>
+
+        </div>
 
       <!-- BUY ME A COFFE
         <div class = "buy-coffe"><a href="https://www.buymeacoffee.com/brunocuevas?new=1" target="_blank"><img class = "coffe-img" src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a></div> -->
 
       <!-- ACCORDION -->
-    <div class="accordion-item">
+    <div class="games-container">
       
-        <h2 class="accordion-header" id="headingOne">
-          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-            Modos de Juego
-          </button>
-        </h2>
-        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-          <div class="accordion-body">
+        <h2 class = "games-title">Modos de Juego</h2>
 
+          <div class="accordion-body">
             <!-- IMPORTANTE LA FUNCIÓN CHANGE! -->
-            <li class="list-group-item">
-              <input class="form-check-input me-1" type="checkbox" value="picante" aria-label="..." v-model = "questionKind" @change="creatingArray()">
+            <li class="checkbox-list
+            ">
+              <input class="checkbox" type="checkbox" value="picante"  v-model = "questionKind" @change="creatingArray()">
               Preguntas Picantes (+18)
             </li>
 
-            <li class="list-group-item">
-              <input class="form-check-input me-1" type="checkbox" value="previa" aria-label="..." v-model = "questionKind" @change = "creatingArray()">
+            <li class="checkbox-list
+            ">
+              <input class="checkbox" type="checkbox" value="previa"  v-model = "questionKind" @change = "creatingArray()">
               Preguntas de Previa
             </li>
 
-            <li class="list-group-item">
-              <input class="form-check-input me-1" type="checkbox" value="gente" aria-label="..." v-model = "questionKind" @change = "creatingArray()">
+            <li class="checkbox-list
+            ">
+              <input class="checkbox" type="checkbox" value="gente"  v-model = "questionKind" @change = "creatingArray()">
               Preguntas Inofensivas
             </li>
 
-            <li class="list-group-item">
-              <input class="form-check-input me-1" type="checkbox" value="conocer" aria-label="..." v-model = "questionKind" @change = "creatingArray()">
+            <li class="checkbox-list
+            ">
+              <input class="checkbox" type="checkbox" value="conocer"  v-model = "questionKind" @change = "creatingArray()">
               ¿Cuánto te conocen? 
             </li>
 
-            <li class="list-group-item">
-              <input class="form-check-input me-1" type="checkbox" value="ing" aria-label="..." v-model = "questionKind" @change = "creatingArray()">
+            <li class="checkbox-list
+            ">
+              <input class="checkbox" type="checkbox" value="ing"  v-model = "questionKind" @change = "creatingArray()">
               Solo Ingenieros
             </li>
 
-            <li class="list-group-item">
-              <input class="form-check-input me-1" type="checkbox" value="general" aria-label="..." v-model = "questionKind" @change = "creatingArray()">
+            <li class="checkbox-list
+            ">
+              <input class="checkbox" type="checkbox" value="general"  v-model = "questionKind" @change = "creatingArray()">
               Cultura General
             </li>
             
           </ul>
           </div>
-        </div>
     </div>
   </div>
 
   
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
     <script src="https://kit.fontawesome.com/252cd76872.js" crossorigin="anonymous"></script>
-    <script src="./components/card.js"></script>
+    <script src="./components/card-content.js"></script>
+    <script src="./components/navbar.js"></script>
 </body>
 </html>
